@@ -188,7 +188,7 @@ class Client implements LocalClientInterface
             throw new ClientException(sprintf('Invalid response class: %s', get_class($response)));
         }
 
-        if (null !== $response->errorResponse) {
+        if ($response instanceof BaseResponse && null !== $response->errorResponse) {
             if ($this->debugLogging()) {
                 $this->logger->debug(
                     sprintf(
