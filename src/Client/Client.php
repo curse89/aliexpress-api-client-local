@@ -184,7 +184,7 @@ class Client implements LocalClientInterface
             'json'
         );
 
-        if (!($response instanceof BaseResponse) && !is_subclass_of($response, BaseResponse::class)) {
+        if (!($response instanceof ResponseInterface)) {
             throw new ClientException(sprintf('Invalid response class: %s', get_class($response)));
         }
 
