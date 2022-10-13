@@ -25,15 +25,15 @@ class UpdateProductsResponse implements ResponseInterface
      */
     public $results;
 
-    public function isSuccessful(): bool
+    public function isInvalid(): bool
     {
         foreach($this->results as $result) {
-            if (!$result->ok) {
+            if ($result->ok) {
                 return false;
             }
         }
 
-        return empty($this->results) ? false : true;
+        return true;
     }
 
     public function getAllErrors(): array
@@ -46,6 +46,6 @@ class UpdateProductsResponse implements ResponseInterface
             $errors[] = $result->errors;
         }
 
-        return array_merge(...$errors);
+        return empty($errors) ? $errors : array_merge(...$errors);
     }
 }
