@@ -28,19 +28,19 @@ class UpdateProductsResponse implements ResponseInterface
     public function isSuccessful(): bool
     {
         foreach($this->results as $result) {
-            if(!$result->success) {
+            if (!$result->success) {
                 return false;
             }
         }
 
-        return empty($this->results)? false : true;
+        return empty($this->results) ? false : true;
     }
 
     public function getAllErrors(): array
     {
         $errors = [];
-        foreach($this->results as $result) {
-            if($result->success) {
+        foreach ($this->results as $result) {
+            if ($result->success) {
                 continue;
             }
             $errors[] = $result->errors;
