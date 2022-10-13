@@ -28,7 +28,7 @@ class UpdateProductsResponse implements ResponseInterface
     public function isSuccessful(): bool
     {
         foreach($this->results as $result) {
-            if (!$result->success) {
+            if (!$result->ok) {
                 return false;
             }
         }
@@ -40,7 +40,7 @@ class UpdateProductsResponse implements ResponseInterface
     {
         $errors = [];
         foreach ($this->results as $result) {
-            if ($result->success) {
+            if ($result->ok) {
                 continue;
             }
             $errors[] = $result->errors;
