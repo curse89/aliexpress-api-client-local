@@ -20,8 +20,32 @@ class UpdateProductsResponse implements ResponseInterface
     /**
      * @var array $results
      *
-     * @JMS\Type("array<Simla\Model\Response\Product\ResponseResultDto>")
+     * @JMS\Type("array<Simla\Model\Response\Data\Product\UpdateProductsResponseResultData>")
      * @JMS\SerializedName("results")
      */
     public $results;
+
+    public function isSuccessful(): bool
+    {
+        foreach($this->results as $result) {
+            if(!$result->success) {
+                return false;
+            }
+        }
+
+        return empty($this->results)? false : true;
+    }
+
+    public function getAllErrors(): array
+    {
+        $errors = [];
+        foreach($this->results as $result) {
+            if($result->success) {
+                continue;
+            }
+            $errors[] = $result->errors;
+        }
+
+        return array_merge(...$errors);
+    }
 }

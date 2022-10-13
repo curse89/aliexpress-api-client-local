@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Simla\Model\Response\Product;
+namespace Simla\Model\Response\Data\Product;
 
 use JMS\Serializer\Annotation as JMS;
 
-class ResponseResultDto
+class UpdateProductsResponseResultData
 {
     /**
      * @var string $ok
