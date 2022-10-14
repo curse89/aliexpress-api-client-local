@@ -32,7 +32,7 @@ class GetProductsTaskStatusResponseData
      *
      * @JMS\Type("int")
      * @JMS\SerializedName("action")
-     * @Assert\Choice(choices=Simla\Model\Enum\ProductAsyncTaskActions::ACTIONS_LIST, multiple=false)
+     * @Assert\Choice(choices=Simla\Model\Enum\ProductsTaskActions::ACTIONS_LIST, multiple=false)
      */
     public $action;
 
@@ -41,7 +41,7 @@ class GetProductsTaskStatusResponseData
      *
      * @JMS\Type("int")
      * @JMS\SerializedName("status")
-     * @Assert\Choice(choices=Simla\Model\Enum\ProductAsyncTaskStatuses::STATUSES_LIST, multiple=false)
+     * @Assert\Choice(choices=Simla\Model\Enum\ProductsTaskStatuses::STATUSES_LIST, multiple=false)
      */
     public $status;
 
