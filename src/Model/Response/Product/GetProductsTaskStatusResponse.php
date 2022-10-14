@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Simla\Model\Response\Product;
 
+use JMS\Serializer\Annotation as JMS;
 use Simla\Model\Response\Data\Product\GetProductsTaskStatusResponseData;
 use Simla\Model\Response\ResponseInterface;
 
