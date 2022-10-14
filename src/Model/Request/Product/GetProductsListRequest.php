@@ -39,4 +39,9 @@ class GetProductsListRequest extends BaseRequest
     {
         return GetProductsListResponse::class;
     }
+
+    public function getHTTPMethod(): string
+    {
+        return 'POST';
+    }
 }

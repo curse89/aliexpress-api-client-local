@@ -28,4 +28,9 @@ class UpdateProductsStocksRequest extends BaseRequest
     {
         return UpdateProductsResponse::class;
     }
+
+    public function getHTTPMethod(): string
+    {
+        return 'POST';
+    }
 }

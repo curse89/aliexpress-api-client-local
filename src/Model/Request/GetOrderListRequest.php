@@ -172,4 +172,9 @@ class GetOrderListRequest extends BaseRequest
     {
         return GetOrderListResponse::class;
     }
+
+    public function getHTTPMethod(): string
+    {
+        return 'POST';
+    }
 }
