@@ -9,6 +9,7 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Simla\Component\Environment;
+use Simla\Component\Exception\LimitApiException;
 use Simla\Component\Exception\LocalApiException;
 use Simla\Component\Exception\ClientException;
 use Simla\Component\Exception\FactoryException;
@@ -31,6 +32,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Client implements LocalClientInterface
 {
+    public const UPDATE_PRODUCT_LIMIT_INTERVAL = '+ 4 hour';
+
+    public const LIMIT_EXCEPTION_HTTP_CODE = 429;
+
     use ValidatorAwareTrait;
 
     /**
@@ -199,6 +204,10 @@ class Client implements LocalClientInterface
                         $bodyData
                     )
                 );
+            }
+
+            if (self::LIMIT_EXCEPTION_HTTP_CODE === $response->errorResponse->code) {
+                throw (new LimitApiException($response->errorResponse))->setNextPossibleRequestTime();
             }
 
             throw new LocalApiException($response->errorResponse);
