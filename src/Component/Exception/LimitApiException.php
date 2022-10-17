@@ -23,25 +23,25 @@ use Simla\Client\Client;
 class LimitApiException extends LocalApiException
 {
     /**
-     * @var string $firstAliProductId
+     * @var string $firstAliSkuCode
      */
-    private $firstAliProductId;
+    private $firstAliSkuCode;
 
     /**
      * @var DateTimeImmutable
      */
     private $nextPossibleRequestTime;
 
-    public function setFirstAliProductId(string $productId): self
+    public function setFirstAliSkuCode(string $skuCode): self
     {
-        $this->firstAliProductId = $productId;
+        $this->firstAliSkuCode = $skuCode;
 
         return $this;
     }
 
-    public function getFirstAliProductId(): ?string
+    public function getFirstAliSkuCode(): ?string
     {
-        return $this->firstAliProductId;
+        return $this->firstAliSkuCode;
     }
 
     public function setNextPossibleRequestTime(): self
