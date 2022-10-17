@@ -12,7 +12,8 @@ namespace Simla\Component\Exception;
 
 use DateTimeImmutable;
 use DateTimeZone;
-use Simla\Client\Client;
+use Simla\Model\Response\ErrorResponseBody;
+use Throwable;
 
 /**
  * Class LimitApiException
@@ -28,9 +29,16 @@ class LimitApiException extends LocalApiException
     private $firstAliSkuCode;
 
     /**
-     * @var DateTimeImmutable
+     * @var DateTimeImmutable $createdAt
      */
-    private $nextPossibleRequestTime;
+    private $createdAt;
+
+    public function __construct(ErrorResponseBody $responseBody, Throwable $previous = null)
+    {
+        parent::__construct($responseBody, $previous);
+
+        $this->createdAt = new DateTimeImmutable("now", new DateTimeZone('UTC'));;
+    }
 
     public function setFirstAliSkuCode(string $skuCode): self
     {
@@ -44,18 +52,8 @@ class LimitApiException extends LocalApiException
         return $this->firstAliSkuCode;
     }
 
-    public function setNextPossibleRequestTime(): self
+    public function getCreatedAt(): DateTimeImmutable
     {
-        $this->nextPossibleRequestTime = new DateTimeImmutable(
-            Client::UPDATE_PRODUCT_LIMIT_INTERVAL,
-            new DateTimeZone('+0300')
-        );
-
-        return $this;
-    }
-
-    public function getNextPossibleRequestTime(): ?DateTimeImmutable
-    {
-        return $this->nextPossibleRequestTime;
+        return $this->createdAt;
     }
 }

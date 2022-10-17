@@ -211,8 +211,7 @@ class Client implements LocalClientInterface
                 $response instanceof UpdateProductsResponse
                 && self::LIMIT_EXCEPTION_HTTP_CODE === $response->errorResponse->code
             ) {
-                throw (new LimitApiException($response->errorResponse))
-                    ->setNextPossibleRequestTime();
+                throw new LimitApiException($response->errorResponse);
             }
 
             throw new LocalApiException($response->errorResponse);
