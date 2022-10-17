@@ -19,6 +19,7 @@ use Simla\Interfaces\ClientInterface as LocalClientInterface;
 use Simla\Interfaces\RequestFactoryInterface;
 use Simla\Model\Request\BaseRequest;
 use Simla\Model\Response\BaseResponse;
+use Simla\Model\Response\Product\UpdateProductsResponse;
 use Simla\Model\Response\ResponseInterface;
 use Simla\Traits\ValidatorAwareTrait;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -206,8 +207,12 @@ class Client implements LocalClientInterface
                 );
             }
 
-            if (self::LIMIT_EXCEPTION_HTTP_CODE === $response->errorResponse->code) {
-                throw (new LimitApiException($response->errorResponse))->setNextPossibleRequestTime();
+            if (
+                $response instanceof UpdateProductsResponse
+                && self::LIMIT_EXCEPTION_HTTP_CODE === $response->errorResponse->code
+            ) {
+                throw (new LimitApiException($response->errorResponse))
+                    ->setNextPossibleRequestTime();
             }
 
             throw new LocalApiException($response->errorResponse);
