@@ -184,11 +184,11 @@ class Client implements LocalClientInterface
             'json'
         );
 
-        if (!($response instanceof ResponseInterface)) {
+        if (!($response instanceof BaseResponse) && !is_subclass_of($response, BaseResponse::class)) {
             throw new ClientException(sprintf('Invalid response class: %s', get_class($response)));
         }
 
-        if ($response instanceof BaseResponse && null !== $response->errorResponse) {
+        if (null !== $response->errorResponse) {
             if ($this->debugLogging()) {
                 $this->logger->debug(
                     sprintf(

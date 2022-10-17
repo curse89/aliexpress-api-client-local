@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Simla\Model\Response\Product;
 
 use JMS\Serializer\Annotation as JMS;
-use Simla\Model\Response\ResponseInterface;
+use Simla\Model\Response\BaseResponse;
 
-class UpdateProductsResponse implements ResponseInterface
+class UpdateProductsResponse extends BaseResponse
 {
     /**
      * @var string $groupId

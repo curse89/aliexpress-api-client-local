@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Simla\Model\Response\Product;
 
 use JMS\Serializer\Annotation as JMS;
+use Simla\Model\Response\BaseResponse;
 use Simla\Model\Response\Data\Product\GetProductsTaskStatusResponseData;
-use Simla\Model\Response\ResponseInterface;
 
-class GetProductsTaskStatusResponse implements ResponseInterface
+class GetProductsTaskStatusResponse extends BaseResponse
 {
     /**
      * @var GetProductsTaskStatusResponseData[] $taskStatuses
