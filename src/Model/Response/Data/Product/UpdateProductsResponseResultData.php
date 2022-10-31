@@ -17,7 +17,7 @@ class UpdateProductsResponseResultData
     public $ok;
 
     /**
-     * @var string $ok
+     * @var string $taskId
      *
      * @JMS\Type("string")
      * @JMS\SerializedName("task_id")
