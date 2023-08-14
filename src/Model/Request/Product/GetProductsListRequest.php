@@ -11,6 +11,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class GetProductsListRequest extends BaseRequest
 {
+
+    public   function __construct(array $filter = [])
+    {
+        $this->filter = $filter;
+    }
+
     public const PRODUCTS_LIMIT = 50;
 
     /**
@@ -29,6 +35,14 @@ class GetProductsListRequest extends BaseRequest
      * @Assert\NotNull()
      */
     public $limit = self::PRODUCTS_LIMIT;
+
+    /**
+     * @var string $filter
+     *
+     * @JMS\Type("array")
+     * @JMS\SerializedName("filter")
+     */
+    public  $filter;
 
     public function getMethod(): string
     {
