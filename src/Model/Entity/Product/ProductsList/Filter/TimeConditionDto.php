@@ -7,7 +7,7 @@ class TimeConditionDto
     /**
      * @var string $begin_time
      *
-     * @JMS\Type("DateTimeInterface<'YYYY-MM-DDThh:mm:ssZ'>")
+     * @JMS\Type("DateTimeInterface<'Y-m-d'>")
      * @JMS\SerializedName("begin_time")
      */
     public $begin_time;
@@ -15,7 +15,7 @@ class TimeConditionDto
     /**
      * @var string $end_time
      *
-     * @JMS\Type("DateTimeInterface<'YYYY-MM-DDThh:mm:ssZ'>")
+     * @JMS\Type("DateTimeInterface<'Y-m-d'>")
      * @JMS\SerializedName("end_time")
      */
     public $end_time;
