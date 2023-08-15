@@ -1,11 +1,12 @@
 <?php
 
 namespace Simla\Model\Entity\Product\ProductsList\Filter;
+use JMS\Serializer\Annotation as JMS;
 
 class SearchContentDto
 {
     /**
-     * @var string $content_values
+     * @var array $content_values
      *
      * @JMS\Type("array")
      * @JMS\SerializedName("content_values")
