@@ -1,11 +1,13 @@
 <?php
 
 namespace Simla\Model\Entity\Product\ProductsList\Filter;
+use DateTimeInterface;
+use JMS\Serializer\Annotation as JMS;
 
 class TimeConditionDto
 {
     /**
-     * @var string $begin_time
+     * @var DateTimeInterface $begin_time
      *
      * @JMS\Type("DateTimeInterface<'Y-m-d\Th:m:s\Z'>")
      * @JMS\SerializedName("begin_time")
@@ -13,7 +15,7 @@ class TimeConditionDto
     public $begin_time;
 
     /**
-     * @var string $end_time
+     * @var DateTimeInterface $end_time
      *
      * @JMS\Type("DateTimeInterface<'Y-m-d\Th:m:s\Z'>")
      * @JMS\SerializedName("end_time")

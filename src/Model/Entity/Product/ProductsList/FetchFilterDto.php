@@ -4,6 +4,7 @@ namespace Simla\Model\Entity\Product\ProductsList;
 
 use Simla\Model\Entity\Product\ProductsList\Filter\SearchContentDto;
 use Simla\Model\Entity\Product\ProductsList\Filter\TimeConditionDto;
+use JMS\Serializer\Annotation as JMS;
 
 class FetchFilterDto
 {
