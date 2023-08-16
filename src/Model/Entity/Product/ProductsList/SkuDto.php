@@ -9,6 +9,13 @@ use JMS\Serializer\Annotation as JMS;
 class SkuDto
 {
     /**
+     * @var string $id
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("id")
+     */
+    public $id;
+    /**
      * @var string $code
      *
      * @JMS\Type("string")
