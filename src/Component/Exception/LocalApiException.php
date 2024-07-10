@@ -33,7 +33,7 @@ class LocalApiException extends Exception
      */
     public function __construct(ErrorResponseBody $responseBody, Throwable $previous = null)
     {
-        parent::__construct($responseBody->message, $responseBody->code ?? 0, $previous);
+        parent::__construct($responseBody->message ?? '', $responseBody->code ?? 0, $previous);
 
         $this->error = $responseBody;
     }
